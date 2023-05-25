@@ -1,214 +1,151 @@
-body {
-    background-color: rgb(116, 112, 112);
-}
-
-
-#root {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-#layout {
-    display: grid;
+/*手機直的*/
+#container{
+    display:grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 8em auto auto 8em;
     grid-template-areas:
-        "header"
-        "content"
-        "footer"
+    "header"
+    "nav"
+    "main"
+    "footer";
+    width:100%;
 }
-
-
-#layout header {
-    grid-area: header;
-    background-color: white;
-}
-
-
-#layout main {
-    grid-area: content;
-    background-color: darkgrey
-}
-
-
-#layout footer {
-    grid-area: footer;
-    background-color: honeydew;
-}
-
-#cards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-
-#cards section {
-    flex: 0 1 100%;
-    padding: 1em;
-}
-
-#cards section .card {
-    box-shadow: 2px 2px 2px rgba(13, 39, 152, 0.2)
-}
-
-#cards .card {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-}
-
-#cards .card .cardTitle {
-    flex: 0 1 200px;
-}
-
-#cards .card .cardText {
-    flex: 0 1 100px;
-    padding: 1em;
-}
-
-#cards .card .cardFooter {
-    flex: 0 1 50px;
-}
-
-#cards .cardFooter {
-    display: flex;
+.header{    
+    display:flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 0 1em;
+    justify-content:center;
+    align-items: center;
+    background-color: azure;
+    grid-area:header;
 }
 
-#cards .cardFooter .view {
-    flex: 0 1 auto;
-
-    padding: 0.2em;
-    border-radius: 0.4em 0 0 0.4em;
+.nav{
+    background-color: aqua;
+    grid-area:nav;
 }
 
-#cards .cardFooter .edit {
-    flex: 0 1 auto;
-
-    padding: 0.2em;
-    border-radius: 0 0.4em 0.4em 0;
-}
-
-#cards .cardFooter a {
-    text-decoration: none;
-    color: black;
-    border: 1px solid rgb(127, 126, 126);
-    background-color: lightgray;
-    color: rgb(113, 103, 113);
-    font-size: 0.8em;
-}
-
-#cards .cardFooter a:hover {
-    color: black;
-}
-
-#cards .cardFooter span {
-    flex: 0 1 auto;
-    margin-left: auto;
-    padding: 0.5em;
-    font-size: 0.8em;
-    color: rgb(61, 51, 51)
-}
-
-header h2 {
-    font-size: 2em;
-    text-align: center;
-    line-height: 1.5em;
-    color: rgb(106, 106, 106);
-    margin-top: 2em;
-}
-
-
-header img {
-    display: block;
-    margin: 1em auto 2em;
-}
-
-footer ul {
-    margin: 4em 4em 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-}
-
-footer address{
-    margin-top: 3em;
-    text-align: center;
-    font-size: small;
-    color: rgb(79, 76, 76);
-}
-
-footer ul a:link {
-    text-decoration: none;
-    color: rgb(206, 200, 23);
-}
-
-footer ul a:hover {
-    text-decoration: none;
-    color: rgb(204, 56, 56);
-}
-
-
-footer ul img,
-footer ul span {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-}
-
-footer ul li {
+.nav ul{
     list-style-type: none;
-    padding: 0 1em;
+    margin: 0;
+    padding: 0;
 }
 
+.nav a{
+    display: block;
+    padding: 1em;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
 
-@media (min-width: 576px) {
-    #root {
-        width: 100%;
+.main{
+    background-color: beige;
+    grid-area:main;
+    padding: 5em;
+}
+
+.footer{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:center;
+    align-items: center;
+    background-color: aquamarine;
+    grid-area:footer;
+}
+
+form .alert{
+    color:red;
+    font-size: 0.8em;
+}
+
+form .close{
+    display: none;
+}
+
+/*手機橫的*/
+@media (min-width: 576px) {  }
+
+/*平版*/
+@media (min-width: 768px) { 
+    #container{
+        display:grid;
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: 8em auto 8em;
+        grid-template-areas:
+        "header header"
+        "nav main"
+        "footer footer";
+    }
+    .header{    
+        display:flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content:center;
+        align-items: center;
+        background-color: azure;
+        grid-row-start:1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end:3;
+    }
+    
+    .nav{
+        background-color: aqua;
+        grid-row: 2 / 3;
+        grid-column: 1 / span 1;
+    }
+    
+    .nav ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav a{
+        display: block;
+        padding: 1em;
+        text-decoration: none;
+        text-align: center;
+        color: black;
+        font-weight: bold;
+    }
+    
+    .main{
+        background-color: beige;
+        grid-row: 2 / 3;
+        grid-column:2 / 3;
+    }
+    
+    .footer{
+        display:flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content:center;
+        align-items: center;
+        background-color: aquamarine;
+        grid-area:footer;
+    }
+    
+}
+
+/*筆電*/
+@media (min-width: 992px) { }
+
+/*桌機*/
+@media (min-width: 1200px) { 
+    #container{
+        width:1140px;
+        margin:0 auto;
     }
 }
 
-
-@media (min-width: 768px) {
-    #root {
-        max-width: 720px;
-    }
-
-    #cards section {
-        flex: 0 2 50%
-    }
-}
-
-
-@media (min-width: 992px) {
-    #root {
-        max-width: 960px;
-    }
-}
-
-
-@media (min-width: 1200px) {
-    #root {
-        max-width: 1140px;
-    }
-
-    #cards section {
-        flex: 1 1 33%;
-    }
-}
-
-
-@media (min-width: 1400px) {
-    #root {
-        max-width: 1320px;
+/*電競*/
+@media (min-width: 1400px) { 
+    #container{
+        width:1320px;
+        margin:0 auto;
     }
 }
